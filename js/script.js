@@ -1,5 +1,6 @@
 //DECLARAMOS VARIABLES
 let personas = [];
+let carreraAcabada = false;
 
 //CREAMOS LA CLASE PERSONA
 class Persona{
@@ -13,7 +14,7 @@ class Persona{
     }
 
     getDistancia(distancia){
-        this.distancia = distancia;
+        this.distancia = this.distancia + distancia;
     }
 }
 class mainApp{
@@ -22,8 +23,25 @@ class mainApp{
             personas[i] = new Persona();
             personas[i].getNumero(i + 1);
         }
+    }
+    static moverPersonas(){
+        for (let i = 0; i < personas.length; i++) {
+            personas[i].getDistancia(parseInt(Math.random() * (3-1) + 1));
+            if (personas[i].distancia >= 100) {
+                carreraAcabada = true;
+            }
+        };
         console.log(personas);
+    }
+    static empezarCarrera(){
+        while (!carreraAcabada) {
+            this.moverPersonas();
+        }
     }
 }
 
-mainApp.calcularPersonas(25);
+mainApp.calcularPersonas(10);
+
+setTimeout(() => {
+    mainApp.empezarCarrera();
+}, 500);

@@ -1,0 +1,9 @@
+/*CREAMOS LOS COLORES BASE DE LA APLICACION*/
+:root {
+    --azul: #6899fc;
+    --rosa: rgb(255, 37, 208);
+}
+*{
+    padding: 0;
+    margin: 0;
+}
