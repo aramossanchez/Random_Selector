@@ -15,11 +15,9 @@
         </div>
         <div id="pantalla-seleccion">
             <h2>Choose the number of participants!</h2>
-            <form id="formulario">
-                <input type="text" id="numero-personas" onkeydown="mainApp.controlEnter(event)" placeholder="Need a positive number here!">
-                <div class="boton" onclick="mainApp.prepararCarrera()">Generate participants!</div>
-                <div id="show-race" class="button" onclick="mainApp.cambiarPantalla('pantallaCarrera')">Show Race!</div>
-            </form>
+            <input type="text" id="numero-personas" onkeydown="mainApp.controlEnter(event)" placeholder="Need a positive number!">
+            <div id="generar-participantes" class="boton" onclick="mainApp.prepararCarrera()">Generate participants!</div>
+            <div id="show-race" class="boton" onclick="mainApp.cambiarPantalla('pantallaCarrera')">Show Race!</div>
         </div>
         <div id="pantalla-carrera">
             <div id="start-race">Start Race!</div>

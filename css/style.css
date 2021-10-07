@@ -45,11 +45,47 @@
 }
 #pantalla-seleccion{
     display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Chakra Petch', sans-serif;
     width: 100%;
     height: 100%
 }
+#pantalla-seleccion h2{
+    font-size: 5em;
+    text-align: center;
+    background: -webkit-linear-gradient(var(--rosa), var(--azul));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--azul);
+    -webkit-text-stroke: 0.01em var(--blanco);
+    color: transparent;
+    margin: 1em 0;
+}
+#pantalla-seleccion input{
+    all:unset;
+    text-align: center;
+    font-size: 2em;
+    padding: 0.3em;
+    width: 14em;
+    color: var(--blanco);
+    background: linear-gradient(to bottom, var(--azul), var(--rosa));
+    border-radius: 5em;
+    border: 0.1em solid black;
+    box-shadow: 0px 0px 20px 8px var(--blanco);
+}
 .boton{
     cursor: pointer;
+    font-size: 1.5em;
+    padding: 0.25em 1em;
+    border-radius: 2em;
+    background-color: var(--blanco);
+    color: black;
+    text-align: center;
+    animation: pressStart 1.5s infinite;
+    width: auto;
+    margin: 2em 0;
 }
 #pantalla-carrera{
     display: none;

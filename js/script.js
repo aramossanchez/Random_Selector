@@ -6,12 +6,14 @@ let cantidadParticipantes = 0;
 let pantallaInicio = document.getElementById("pantalla-inicio");
 let pantallaSeleccion = document.getElementById("pantalla-seleccion");
 let pantallaCarrera = document.getElementById("pantalla-carrera");
-let showRace = document.getElementById("show-race");
 let pantallas = {
     "pantallaInicio": pantallaInicio,
     "pantallaSeleccion": pantallaSeleccion,
     "pantallaCarrera": pantallaCarrera
 };
+let showRace = document.getElementById("show-race");
+let generarParticipantes = document.getElementById("generar-participantes");
+
 //VARIABLE PARA CAPTURAR EL NUMERO DE PERSONAS ELEGIDO POR EL USUARIO
 let numeroPersonas = document.getElementById("numero-personas");
 
@@ -70,11 +72,17 @@ class mainApp{
             personas[i].getNumero(i + 1);
         }
     }
+    static renderPersonas(){
+        for (let i = 0; i < personas.length; i++) {
+            
+        }
+    }
     //FUNCION QUE UNE LA OBTENCIÓN DEL DATO METIDO POR USUARIO CON LA CREACIÓN DE LOS OBJETOS PERSONA
     static prepararCarrera = () =>{
         this.cogerNumeroPersonas();
         if (cantidadParticipantes > 0) {
             this.calcularPersonas(cantidadParticipantes);
+            generarParticipantes.style.display = "none";
         }
         console.log(personas);
     }
