@@ -17,7 +17,8 @@
             <h2>Choose the number of participants!</h2>
             <form id="formulario">
                 <input type="text" id="numero-personas" onkeydown="mainApp.controlEnter(event)">
-                <div class="boton" onclick="mainApp.cogerNumeroPersonas(event)">Generate participants!</div>
+                <div class="boton" onclick="mainApp.cogerNumeroPersonas()">Generate participants!</div>
+                <div id="show-race" class="button" onclick="mainApp.cambiarPantalla('pantallaCarrera')">Start Race!</div>
             </form>
         </div>
         <div id="pantalla-carrera"></div>

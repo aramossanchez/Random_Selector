@@ -1,10 +1,12 @@
 //DECLARO VARIABLES
 let personas = [];
 let carreraAcabada = false;
+let cantidadParticipantes = 1;
 //VARIABLES DE CAMBIO DE PANTALLA
 let pantallaInicio = document.getElementById("pantalla-inicio");
 let pantallaSeleccion = document.getElementById("pantalla-seleccion");
 let pantallaCarrera = document.getElementById("pantalla-carrera");
+let showRace = document.getElementById("show-race");
 let pantallas = {
     "pantallaInicio": pantallaInicio,
     "pantallaSeleccion": pantallaSeleccion,
@@ -43,13 +45,15 @@ class mainApp{
     //OBTIENE EL NÚMERO INTRODUCIDO POR EL USUARIO, TRAS COMPROBAR QUE ES UN NUMERO CORRECTO
     static cogerNumeroPersonas(){
         let numero = parseInt(numeroPersonas.value);
-        if (typeof numero == NaN) {
+        if (isNaN(numero)) {
             console.log("Introduce un número, máquina");
         }else{
             if (numero <= 0) {
                 console.log("Introduce un número mayor de 0, máquina");                
-            }else{
-                console.log(numero);
+            }
+            if(numero > 0){
+                cantidadParticipantes = parseInt(numero);
+                showRace.style.display = "flex"; //MOSTRAMOS BOTÓN PARA MOSTRAR LA CARRERA
             }
         }
     }
@@ -59,6 +63,7 @@ class mainApp{
             e.preventDefault();
         }
     }
+    //SE GENERAN LOS OBJETOS PERSONAS DE MANERA AUTOMATICA
     static calcularPersonas(num){
         for (let i = 0; i < num; i++) {
             personas[i] = new Persona();
@@ -81,8 +86,8 @@ class mainApp{
     }
 }
 
-mainApp.calcularPersonas(10);
+mainApp.calcularPersonas(cantidadParticipantes);
 
-setTimeout(() => {
-    mainApp.empezarCarrera();
-}, 500);
+// setTimeout(() => {
+//     mainApp.empezarCarrera();
+// }, 500);
