@@ -20,6 +20,7 @@ let numeroPersonas = document.getElementById("numero-personas");
 
 //VARIABLE CREADA PARA PINTAR EN PANTALLA LOS OBJETOS PERSONA CREADAS
 let listadoPersonasSeleccion = document.getElementById("listado-personas-seleccion");
+let listadoPersonasCarrera = document.getElementById("listado-personas-carrera");
 
 
 
@@ -79,7 +80,8 @@ class mainApp{
     //PINTAMOS LOS OBJETOS PERSONA EN PANTALLA SELECCION
     static renderPersonas(){
         for (let i = 0; i < personas.length; i++) {
-            listadoPersonasSeleccion.innerHTML = listadoPersonasSeleccion.innerHTML + `<div class="persona">${personas[i].numero}</div>`
+            listadoPersonasSeleccion.innerHTML = listadoPersonasSeleccion.innerHTML + `<div class="persona">${personas[i].numero}</div>`;
+            listadoPersonasCarrera.innerHTML = listadoPersonasCarrera.innerHTML + `<div id="persona-${personas[i].numero}" class="persona-carrera" style="margin-left: 0%">${personas[i].numero}</div>`
         }
     }
     //FUNCION QUE UNE LA OBTENCIÓN DEL DATO METIDO POR USUARIO CON LA CREACIÓN DE LOS OBJETOS PERSONA, ADEMAS DE SU REPRESENTACION EN PANTALLA SELECCION
@@ -94,10 +96,15 @@ class mainApp{
         }
         console.log(personas);
     }
+    //MODIFICAMOS EL VALOR DISTANCIA DE LOS OBJETOS Y MOVEMOS EL DIV QUE LOS CONTIENE
     static moverPersonas(){
         for (let i = 0; i < personas.length; i++) {
-            personas[i].getDistancia(parseInt(Math.random() * (3-1) + 1));
-            if (personas[i].distancia >= 100) {
+            let distanciaRecorrida = parseInt(Math.random() * (3-1) + 1)
+            personas[i].getDistancia(distanciaRecorrida);
+            let distanciaActual = parseInt(document.getElementById(`persona-${personas[i].numero}`).style.marginLeft.replace("%",""));
+            document.getElementById(`persona-${personas[i].numero}`).style.marginLeft = distanciaActual + distanciaRecorrida + "%";
+            console.log(distanciaActual);
+            if (personas[i].distancia >= 98) {
                 carreraAcabada = true;
             }
         };
