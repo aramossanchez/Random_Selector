@@ -13,9 +13,13 @@ let pantallas = {
 };
 let showRace = document.getElementById("show-race");
 let generarParticipantes = document.getElementById("generar-participantes");
+let textoChoose = document.getElementById("choose");
 
 //VARIABLE PARA CAPTURAR EL NUMERO DE PERSONAS ELEGIDO POR EL USUARIO
 let numeroPersonas = document.getElementById("numero-personas");
+
+//VARIABLE CREADA PARA PINTAR EN PANTALLA LOS OBJETOS PERSONA CREADAS
+let listadoPersonasSeleccion = document.getElementById("listado-personas-seleccion");
 
 
 
@@ -72,17 +76,21 @@ class mainApp{
             personas[i].getNumero(i + 1);
         }
     }
+    //PINTAMOS LOS OBJETOS PERSONA EN PANTALLA SELECCION
     static renderPersonas(){
         for (let i = 0; i < personas.length; i++) {
-            
+            listadoPersonasSeleccion.innerHTML = listadoPersonasSeleccion.innerHTML + `<div class="persona">${personas[i].numero}</div>`
         }
     }
-    //FUNCION QUE UNE LA OBTENCIÓN DEL DATO METIDO POR USUARIO CON LA CREACIÓN DE LOS OBJETOS PERSONA
+    //FUNCION QUE UNE LA OBTENCIÓN DEL DATO METIDO POR USUARIO CON LA CREACIÓN DE LOS OBJETOS PERSONA, ADEMAS DE SU REPRESENTACION EN PANTALLA SELECCION
     static prepararCarrera = () =>{
         this.cogerNumeroPersonas();
         if (cantidadParticipantes > 0) {
             this.calcularPersonas(cantidadParticipantes);
             generarParticipantes.style.display = "none";
+            numeroPersonas.style.display = "none";
+            textoChoose.innerHTML = `You have selected ${cantidadParticipantes} participants!`
+            this.renderPersonas();
         }
         console.log(personas);
     }

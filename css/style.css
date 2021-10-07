@@ -1,3 +1,4 @@
+/* IMPORTAMOS FUENTE */
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap');
 /*CREAMOS LOS COLORES BASE DE LA APLICACION*/
 :root {
@@ -16,6 +17,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--blanco);
+    overflow: hidden;
 }
 #pantalla-inicio{
     display: flex;
@@ -87,10 +89,35 @@
     width: auto;
     margin: 2em 0;
 }
+#listado-personas-seleccion{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 2em 0;
+}
+.persona{
+    background-image: url("../img/angel.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size:2em;
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0.25em;
+    cursor: default;
+}
 #pantalla-carrera{
     display: none;
     width: 100%;
     height: 100%
+}
+#listado-personas-carrera{
+
 }
 #show-race{
     display: none;

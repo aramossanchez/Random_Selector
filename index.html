@@ -14,13 +14,15 @@
             <div class="boton-inicio" onclick="mainApp.cambiarPantalla('pantallaSeleccion')">Press Start!</div>
         </div>
         <div id="pantalla-seleccion">
-            <h2>Choose the number of participants!</h2>
+            <h2 id="choose">Choose the number of participants!</h2>
             <input type="text" id="numero-personas" onkeydown="mainApp.controlEnter(event)" placeholder="Need a positive number!">
             <div id="generar-participantes" class="boton" onclick="mainApp.prepararCarrera()">Generate participants!</div>
+            <div id="listado-personas-seleccion"></div>
             <div id="show-race" class="boton" onclick="mainApp.cambiarPantalla('pantallaCarrera')">Show Race!</div>
         </div>
         <div id="pantalla-carrera">
             <div id="start-race">Start Race!</div>
+            <div id="listado-personas-carrera"></div>
         </div>
     </div>
 
