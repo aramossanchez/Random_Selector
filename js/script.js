@@ -1,7 +1,7 @@
 //DECLARO VARIABLES
 let personas = [];
 let carreraAcabada = false;
-let cantidadParticipantes = 1;
+let cantidadParticipantes = 0;
 //VARIABLES DE CAMBIO DE PANTALLA
 let pantallaInicio = document.getElementById("pantalla-inicio");
 let pantallaSeleccion = document.getElementById("pantalla-seleccion");
@@ -69,6 +69,14 @@ class mainApp{
             personas[i] = new Persona();
             personas[i].getNumero(i + 1);
         }
+    }
+    //FUNCION QUE UNE LA OBTENCIÓN DEL DATO METIDO POR USUARIO CON LA CREACIÓN DE LOS OBJETOS PERSONA
+    static prepararCarrera = () =>{
+        this.cogerNumeroPersonas();
+        if (cantidadParticipantes > 0) {
+            this.calcularPersonas(cantidadParticipantes);
+        }
+        console.log(personas);
     }
     static moverPersonas(){
         for (let i = 0; i < personas.length; i++) {
