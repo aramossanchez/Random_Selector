@@ -84,7 +84,7 @@ class mainApp{
             listadoPersonasCarrera.innerHTML = listadoPersonasCarrera.innerHTML + `<div id="persona-${personas[i].numero}" class="persona-carrera" style="margin-left: 0%">${personas[i].numero}</div>`
         }
     }
-    //FUNCION QUE UNE LA OBTENCIÓN DEL DATO METIDO POR USUARIO CON LA CREACIÓN DE LOS OBJETOS PERSONA, ADEMAS DE SU REPRESENTACION EN PANTALLA SELECCION
+    //FUNCION QUE UNE LA OBTENCIÓN DEL DATO METIDO POR USUARIO CON LA CREACIÓN DE LOS OBJETOS PERSONA, ADEMAS DE SU REPRESENTACION EN PANTALLAS
     static prepararCarrera = () =>{
         this.cogerNumeroPersonas();
         if (cantidadParticipantes > 0) {
