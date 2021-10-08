@@ -11,13 +11,12 @@
     margin: 0;
 }
 #container{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-image: url(../img/fondo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--blanco);
-    overflow-x: hidden;
 }
 #container::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -149,15 +148,21 @@
     width: 100%;
     height: 100%;
 }
+#start-race{
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .boton-empezar-carrera{
+    font-size: 2em;
     margin: 0.5em 0;
 }
 #listado-personas-carrera{
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
     justify-content: space-around;
-    align-self: flex-start;
     width: 100%;
     height: 90vh;
 }

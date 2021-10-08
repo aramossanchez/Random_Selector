@@ -81,7 +81,7 @@ class mainApp{
     static renderPersonas(){
         for (let i = 0; i < personas.length; i++) {
             listadoPersonasSeleccion.innerHTML = listadoPersonasSeleccion.innerHTML + `<div class="persona">${personas[i].numero}</div>`;
-            listadoPersonasCarrera.innerHTML = listadoPersonasCarrera.innerHTML + `<div id="persona-${personas[i].numero}" class="persona-carrera" style="margin-top: 0%">${personas[i].numero}</div>`
+            listadoPersonasCarrera.innerHTML = listadoPersonasCarrera.innerHTML + `<div id="persona-${personas[i].numero}" class="persona-carrera" style="margin-top: 0vh">${personas[i].numero}</div>`
         }
     }
     //FUNCION QUE UNE LA OBTENCIÓN DEL DATO METIDO POR USUARIO CON LA CREACIÓN DE LOS OBJETOS PERSONA, ADEMAS DE SU REPRESENTACION EN PANTALLAS
@@ -101,10 +101,10 @@ class mainApp{
         for (let i = 0; i < personas.length; i++) {
             let distanciaRecorrida = parseInt(Math.random() * (2-0))
             personas[i].getDistancia(distanciaRecorrida);
-            let distanciaActual = parseInt(document.getElementById(`persona-${personas[i].numero}`).style.marginTop.replace("%",""));
-            document.getElementById(`persona-${personas[i].numero}`).style.marginTop = distanciaActual + distanciaRecorrida + "%";
+            let distanciaActual = parseInt(document.getElementById(`persona-${personas[i].numero}`).style.marginTop.replace("vh",""));
+            document.getElementById(`persona-${personas[i].numero}`).style.marginTop = distanciaActual + distanciaRecorrida + "vh";
             console.log(distanciaActual);
-            if (personas[i].distancia >= 39) {
+            if (personas[i].distancia >= 80) {
                 carreraAcabada = true;
             }
         };
