@@ -96,7 +96,7 @@ class mainApp{
         let seleccionGanador = setInterval(() => {
             sound.currentTime = 0.25;
             sound.play();
-            let numRandom = parseInt(Math.random() * ((cantidadParticipantes + 1)));
+            let numRandom = parseInt(Math.random() * (cantidadParticipantes));
             for (let i = 0; i < participantes.length; i++) {
                 participantes[i].classList.remove("elegida");
             }
