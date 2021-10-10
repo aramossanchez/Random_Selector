@@ -5,13 +5,11 @@ let cantidadParticipantes = 0;
 //VARIABLES DE CAMBIO DE PANTALLA
 let pantallaInicio = document.getElementById("pantalla-inicio");
 let pantallaSeleccion = document.getElementById("pantalla-seleccion");
-let pantallaCarrera = document.getElementById("pantalla-carrera");
 let pantallas = {
     "pantallaInicio": pantallaInicio,
     "pantallaSeleccion": pantallaSeleccion,
-    "pantallaCarrera": pantallaCarrera
 };
-let showRace = document.getElementById("show-race");
+let startSelection = document.getElementById("start-selection");
 let generarParticipantes = document.getElementById("generar-participantes");
 let textoChoose = document.getElementById("choose");
 
@@ -20,23 +18,20 @@ let numeroPersonas = document.getElementById("numero-personas");
 
 //VARIABLE CREADA PARA PINTAR EN PANTALLA LOS OBJETOS PERSONA CREADAS
 let listadoPersonasSeleccion = document.getElementById("listado-personas-seleccion");
-let listadoPersonasCarrera = document.getElementById("listado-personas-carrera");
+
+//SONIDO
+const sound = new Audio("./sound/bip.mp3");
 
 
 
 //CREO LA CLASE PERSONA
 class Persona{
     constructor(){
-        this.numero = 0,
-        this.distancia = 0
+        this.numero = 0
     }
 
     getNumero(numero){
         this.numero = numero;
-    }
-
-    getDistancia(distancia){
-        this.distancia = this.distancia + distancia;
     }
 }
 
@@ -60,7 +55,7 @@ class mainApp{
             }
             if(numero > 0){
                 cantidadParticipantes = parseInt(numero);
-                showRace.style.display = "flex"; //MOSTRAMOS BOTÓN PARA MOSTRAR LA CARRERA
+                startSelection.style.display = "flex"; //MOSTRAMOS BOTÓN PARA MOSTRAR LA CARRERA
             }
         }
     }
@@ -81,7 +76,6 @@ class mainApp{
     static renderPersonas(){
         for (let i = 0; i < personas.length; i++) {
             listadoPersonasSeleccion.innerHTML = listadoPersonasSeleccion.innerHTML + `<div class="persona">${personas[i].numero}</div>`;
-            listadoPersonasCarrera.innerHTML = listadoPersonasCarrera.innerHTML + `<div id="persona-${personas[i].numero}" class="persona-carrera" style="margin-top: 0vh">${personas[i].numero}</div>`
         }
     }
     //FUNCION QUE UNE LA OBTENCIÓN DEL DATO METIDO POR USUARIO CON LA CREACIÓN DE LOS OBJETOS PERSONA, ADEMAS DE SU REPRESENTACION EN PANTALLAS
@@ -96,29 +90,21 @@ class mainApp{
         }
         console.log(personas);
     }
-    //MODIFICAMOS EL VALOR DISTANCIA DE LOS OBJETOS Y MOVEMOS EL DIV QUE LOS CONTIENE
-    static moverPersonas(){
-        for (let i = 0; i < personas.length; i++) {
-            let distanciaRecorrida = parseInt(Math.random() * (2-0))
-            personas[i].getDistancia(distanciaRecorrida);
-            let distanciaActual = parseInt(document.getElementById(`persona-${personas[i].numero}`).style.marginTop.replace("vh",""));
-            document.getElementById(`persona-${personas[i].numero}`).style.marginTop = distanciaActual + distanciaRecorrida + "vh";
-            console.log(distanciaActual);
-            if (personas[i].distancia >= 80) {
-                carreraAcabada = true;
+    //MOSTRAMOS GANADOR EN PANTALLA
+    static escogerGanador = () =>{
+        let participantes = document.getElementsByClassName("persona");
+        let seleccionGanador = setInterval(() => {
+            sound.currentTime = 0.25;
+            sound.play();
+            let numRandom = parseInt(Math.random() * ((cantidadParticipantes + 1)));
+            for (let i = 0; i < participantes.length; i++) {
+                participantes[i].classList.remove("elegida");
             }
-        };
-        console.log(personas);
-    }
-    static empezarCarrera(){
-        while (!carreraAcabada) {
-            this.moverPersonas();
-        }
+            participantes[numRandom].classList.add("elegida");
+        }, 50);
+        setTimeout(() => {
+            clearInterval(seleccionGanador);
+            sound.play();
+        }, 5000);
     }
 }
-
-mainApp.calcularPersonas(cantidadParticipantes);
-
-// setTimeout(() => {
-//     mainApp.empezarCarrera();
-// }, 500);

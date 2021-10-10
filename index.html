@@ -17,16 +17,10 @@
             <h2 id="choose">Choose the number of participants!</h2>
             <input type="text" id="numero-personas" onkeydown="mainApp.controlEnter(event)" placeholder="Need a positive number!">
             <div id="generar-participantes" class="boton" onclick="mainApp.prepararCarrera()">Generate participants!</div>
-            <div id="show-race" class="boton" onclick="mainApp.cambiarPantalla('pantallaCarrera')">Show Selection!</div>
+            <div id="start-selection" class="boton" onclick="mainApp.escogerGanador()">Start Selection!</div>
             <div id="listado-personas-seleccion"></div>
         </div>
-        <div id="pantalla-carrera">
-            <div id="start-race" class="boton boton-empezar-carrera" onclick="mainApp.empezarCarrera()">Start Selector!</div>
-            <div id="listado-personas-carrera"></div>
-        </div>
     </div>
-
-
     <script src="./js/script.js"></script>
 </body>
 </html>
